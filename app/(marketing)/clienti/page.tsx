@@ -3,7 +3,7 @@ const PORTAL_URL = process.env.NEXT_PUBLIC_PORTAL_URL ?? "https://portale.studio
 const passi = [
   { n: "1", titolo: "Accedi al portale", desc: "Usa le credenziali fornite dallo studio per entrare nella tua area riservata." },
   { n: "2", titolo: "Compila la pratica", desc: "Inserisci i dati del nuovo dipendente guidato dal form passo per passo." },
-  { n: "3", titolo: "Invia allo studio", desc: "La comunicazione viene trasmessa allo studio che gestirà gli adempimenti." },
+  { n: "3", titolo: "Invia allo studio", desc: "La comunicazione viene trasmessa allo studio che gestirà gli adempimenti obbligatori." },
 ];
 
 const faq = [
@@ -17,14 +17,14 @@ const faq = [
   },
   {
     domanda: "A cosa serve il portale?",
-    risposta: "Il portale ti permette di inviare le comunicazioni di assunzione direttamente allo studio in modo semplice e sicuro, senza doversi recare fisicamente.",
+    risposta: "Il portale ti permette di inviare le comunicazioni di assunzione direttamente allo studio in modo semplice e sicuro, senza doversi recare fisicamente in ufficio.",
   },
 ];
 
 export default function ClientiPage() {
   return (
     <div className="mx-auto max-w-5xl px-6 py-16">
-      <p className="text-sm font-medium text-brand-700 mb-3 uppercase tracking-wide">Area clienti</p>
+      <p className="text-sm font-semibold text-brand-700 mb-3 uppercase tracking-widest">Area clienti</p>
       <h1 className="text-3xl md:text-4xl font-bold text-[var(--fg)] mb-4 leading-tight">
         Il tuo portale riservato
       </h1>
@@ -41,10 +41,10 @@ export default function ClientiPage() {
           Accedi al portale
         </a>
         <a
-          href={`${PORTAL_URL}/login?redirect=/comunicazione`}
+          href={`${PORTAL_URL}/comunicazione`}
           className="rounded-lg border border-brand-700 px-6 py-3 text-sm font-semibold text-brand-700 hover:bg-brand-50 transition-colors"
         >
-          Nuova pratica di assunzione
+          Nuova comunicazione di assunzione →
         </a>
       </div>
 
@@ -85,10 +85,9 @@ export default function ClientiPage() {
         <p className="text-sm text-[var(--fg-sub)] mb-4">
           Per problemi di accesso o per richiedere le credenziali, contatta direttamente lo studio.
         </p>
-        {/* Placeholder contatti — da completare con dati reali */}
         <div className="flex flex-wrap gap-6 text-sm">
-          <span className="text-[var(--fg-sub)]">📧 info@studiopelati.it</span>
-          <span className="text-[var(--fg-sub)]">📞 —</span>
+          <a href="mailto:info@studiopelati.it" className="text-brand-700 hover:underline">📧 info@studiopelati.it</a>
+          <a href="tel:+390307000841" className="text-brand-700 hover:underline">📞 +39 030 7000841</a>
         </div>
       </div>
     </div>

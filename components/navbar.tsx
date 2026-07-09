@@ -1,10 +1,11 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 
-const PORTAL_URL = process.env.NEXT_PUBLIC_PORTAL_URL ?? "https://studiopelati.it";
+const PORTAL_URL = process.env.NEXT_PUBLIC_PORTAL_URL ?? "https://portale.studiopelati.it";
 
 const links = [
   { href: "/lo-studio", label: "Lo Studio" },
@@ -13,21 +14,34 @@ const links = [
   { href: "/contatti",  label: "Contatti" },
 ];
 
-export function Navbar() {
+export function Navbar({ logoUrl }: { logoUrl?: string | null }) {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
 
   return (
     <header className="sticky top-0 z-50 border-b border-[var(--border)] bg-[var(--bg)]/95 backdrop-blur-sm">
-      <div className="mx-auto flex max-w-5xl items-center justify-between gap-6 px-6 py-4">
-        {/* Wordmark */}
-        <Link href="/" className="flex items-center gap-2.5 font-semibold text-[var(--fg)] hover:opacity-80 transition-opacity">
-          <span className="flex gap-[3px]">
-            <span className="w-[5px] h-6 rounded-full bg-brand-700" />
-            <span className="w-[5px] h-6 rounded-full bg-brand-700 opacity-55" />
-            <span className="w-[5px] h-6 rounded-full bg-brand-700 opacity-30" />
-          </span>
-          <span>Studio Pelati</span>
+      <div className="mx-auto flex max-w-5xl items-center justify-between gap-6 px-6 py-3">
+        {/* Logo / wordmark */}
+        <Link href="/" className="flex items-center gap-3 hover:opacity-80 transition-opacity">
+          {logoUrl ? (
+            <Image
+              src={logoUrl}
+              alt="Studio Pelati"
+              width={120}
+              height={40}
+              className="h-10 w-auto object-contain"
+              unoptimized
+            />
+          ) : (
+            <>
+              <span className="flex gap-[3px]">
+                <span className="w-[5px] h-6 rounded-full bg-brand-700" />
+                <span className="w-[5px] h-6 rounded-full bg-brand-700 opacity-55" />
+                <span className="w-[5px] h-6 rounded-full bg-brand-700 opacity-30" />
+              </span>
+              <span className="font-semibold text-[var(--fg)]">Studio Pelati</span>
+            </>
+          )}
         </Link>
 
         {/* Desktop nav */}
