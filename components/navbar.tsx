@@ -4,12 +4,13 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 
-const PORTAL_URL = process.env.NEXT_PUBLIC_PORTAL_URL ?? "https://portale.studiopelati.it";
+const PORTAL_URL = process.env.NEXT_PUBLIC_PORTAL_URL ?? "https://studiopelati.it";
 
 const links = [
   { href: "/lo-studio", label: "Lo Studio" },
   { href: "/servizi",   label: "Servizi" },
   { href: "/clienti",   label: "Area clienti" },
+  { href: "/contatti",  label: "Contatti" },
 ];
 
 export function Navbar() {
@@ -19,7 +20,7 @@ export function Navbar() {
   return (
     <header className="sticky top-0 z-50 border-b border-[var(--border)] bg-[var(--bg)]/95 backdrop-blur-sm">
       <div className="mx-auto flex max-w-5xl items-center justify-between gap-6 px-6 py-4">
-        {/* Logo / wordmark */}
+        {/* Wordmark */}
         <Link href="/" className="flex items-center gap-2.5 font-semibold text-[var(--fg)] hover:opacity-80 transition-opacity">
           <span className="flex gap-[3px]">
             <span className="w-[5px] h-6 rounded-full bg-brand-700" />
@@ -51,7 +52,7 @@ export function Navbar() {
           href={PORTAL_URL}
           className="hidden md:inline-flex items-center rounded-lg bg-brand-700 px-4 py-2 text-sm font-medium text-white hover:bg-brand-800 transition-colors"
         >
-          Accedi al portale
+          Portale Aziende
         </a>
 
         {/* Mobile burger */}
@@ -83,7 +84,7 @@ export function Navbar() {
             href={PORTAL_URL}
             className="inline-flex justify-center rounded-lg bg-brand-700 px-4 py-2 text-sm font-medium text-white hover:bg-brand-800 transition-colors"
           >
-            Accedi al portale
+            Portale Aziende
           </a>
         </div>
       )}
