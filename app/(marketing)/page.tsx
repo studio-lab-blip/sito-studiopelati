@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { HeroSection } from "@/components/hero-section";
 
 const PORTAL_URL = process.env.NEXT_PUBLIC_PORTAL_URL ?? "https://studiopelati.it";
 
@@ -20,34 +21,7 @@ export default function HomePage() {
   return (
     <>
       {/* Hero */}
-      <section className="mx-auto max-w-5xl px-6 py-20 md:py-28">
-        <p className="text-sm font-semibold text-brand-700 mb-5 tracking-widest uppercase">
-          Studio Pelati — Consulenza del Lavoro
-        </p>
-        <h1 className="text-4xl md:text-5xl font-bold text-[var(--fg)] leading-tight mb-6 max-w-3xl">
-          Consulenza del Lavoro · Amministrazione del Personale · Servizi alle Imprese
-        </h1>
-        <p className="text-lg text-[var(--fg-sub)] max-w-2xl mb-4">
-          Competenza, innovazione e strumenti digitali per semplificare la gestione del lavoro e i rapporti con le aziende.
-        </p>
-        <p className="text-base text-[var(--fg-sub)] max-w-2xl mb-10">
-          Da oltre sessant&apos;anni affianchiamo imprese, professionisti ed enti nella gestione del lavoro, offrendo consulenza specialistica, elaborazione paghe e soluzioni organizzative orientate all&apos;efficienza, alla conformità normativa e alla crescita aziendale.
-        </p>
-        <div className="flex flex-wrap gap-4">
-          <Link
-            href="/contatti"
-            className="rounded-lg bg-brand-700 px-6 py-3 text-sm font-semibold text-white hover:bg-brand-800 transition-colors"
-          >
-            Richiedi un contatto
-          </Link>
-          <a
-            href={PORTAL_URL}
-            className="rounded-lg border border-[var(--border)] px-6 py-3 text-sm font-semibold text-[var(--fg)] hover:border-brand-700 hover:text-brand-700 transition-colors"
-          >
-            Accedi al Portale Aziende
-          </a>
-        </div>
-      </section>
+      <HeroSection />
 
       {/* Punti di forza */}
       <section className="border-t border-[var(--border)] bg-brand-50/30">
