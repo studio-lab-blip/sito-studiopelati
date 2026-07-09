@@ -88,23 +88,23 @@ export function ApprofondimentiClient() {
               className="group flex flex-col rounded-2xl border bg-white p-6 transition-all duration-300"
               style={{
                 borderColor: "#E2E8F0",
-                boxShadow: "0 2px 12px rgba(0,0,0,0.05)",
+                boxShadow: "0 2px 12px rgba(0,0,0,0.06)",
               }}
               onMouseEnter={(e) => {
                 (e.currentTarget as HTMLElement).style.transform = "translateY(-3px)";
-                (e.currentTarget as HTMLElement).style.boxShadow = "0 10px 28px rgba(0,0,0,0.09)";
+                (e.currentTarget as HTMLElement).style.boxShadow = "0 12px 28px rgba(0,0,0,0.10)";
                 (e.currentTarget as HTMLElement).style.borderColor = `${colore}30`;
               }}
               onMouseLeave={(e) => {
                 (e.currentTarget as HTMLElement).style.transform = "translateY(0)";
-                (e.currentTarget as HTMLElement).style.boxShadow = "0 2px 12px rgba(0,0,0,0.05)";
+                (e.currentTarget as HTMLElement).style.boxShadow = "0 2px 12px rgba(0,0,0,0.06)";
                 (e.currentTarget as HTMLElement).style.borderColor = "#E2E8F0";
               }}
             >
               {/* Categoria tag + icona */}
               <div className="mb-5 flex items-center gap-2.5">
                 <div
-                  className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg"
+                  className="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl"
                   style={{ background: `${colore}12` }}
                 >
                   <Icon className="size-4" style={{ color: colore }} strokeWidth={1.8} />

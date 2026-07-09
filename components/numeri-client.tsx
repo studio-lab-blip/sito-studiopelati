@@ -108,7 +108,7 @@ export function NumeriClient() {
                 </p>
               ) : (
                 <div
-                  className="mb-4 flex h-11 w-11 items-center justify-center rounded-xl"
+                  className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl"
                   style={{ background: "rgba(15,76,92,0.08)" }}
                 >
                   <Icon className="size-5" style={{ color: "#0F4C5C" }} strokeWidth={1.8} />

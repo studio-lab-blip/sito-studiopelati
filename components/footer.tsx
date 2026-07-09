@@ -1,4 +1,5 @@
 import { Manrope, Inter } from "next/font/google";
+import Image from "next/image";
 import Link from "next/link";
 
 const manrope = Manrope({
@@ -17,6 +18,17 @@ const inter = Inter({
 
 const PORTAL_URL = process.env.NEXT_PUBLIC_PORTAL_URL ?? "https://portale.studiopelati.it";
 
+async function fetchLogoUrl(): Promise<string | null> {
+  try {
+    const res = await fetch(`${PORTAL_URL}/api/public/studio`, { next: { revalidate: 3600 } });
+    if (!res.ok) return null;
+    const data = await res.json();
+    return (data as { logo_url?: string | null }).logo_url ?? null;
+  } catch {
+    return null;
+  }
+}
+
 const NAV_LINKS = [
   { href: "/lo-studio",       label: "Lo Studio" },
   { href: "/servizi",         label: "Servizi" },
@@ -32,7 +44,8 @@ const SERVIZI = [
   "Ammortizzatori sociali",
 ];
 
-export function Footer() {
+export async function Footer() {
+  const logoUrl = await fetchLogoUrl();
   const year = new Date().getFullYear();
 
   return (
@@ -47,24 +60,37 @@ export function Footer() {
 
           {/* Col 1 — Brand */}
           <div className="sm:col-span-2 lg:col-span-1">
-            <div
-              className="mb-4 h-0.5 w-10 rounded-full"
-              style={{ background: "#C9A227" }}
-            />
+            {logoUrl ? (
+              <Image
+                src={logoUrl}
+                alt="Studio Pelati"
+                width={140}
+                height={48}
+                className="mb-5 h-10 w-auto object-contain brightness-0 invert"
+                unoptimized
+              />
+            ) : (
+              <>
+                <div
+                  className="mb-4 h-0.5 w-10 rounded-full"
+                  style={{ background: "#C9A227" }}
+                />
+                <p
+                  className="mb-1 text-lg font-bold text-white"
+                  style={{ fontFamily: "var(--font-hero-manrope)" }}
+                >
+                  Studio Pelati
+                </p>
+              </>
+            )}
             <p
-              className="mb-1 text-lg font-bold text-white"
-              style={{ fontFamily: "var(--font-hero-manrope)" }}
-            >
-              Studio Pelati
-            </p>
-            <p
-              className="mb-4 text-xs font-semibold uppercase tracking-wider"
+              className="mb-1 text-xs font-semibold uppercase tracking-wider"
               style={{ color: "#C9A227", fontFamily: "var(--font-hero-manrope)" }}
             >
               Consulenza del Lavoro
             </p>
             <p
-              className="mb-2 text-sm leading-relaxed text-white/60"
+              className="mb-3 mt-3 text-sm leading-relaxed text-white/60"
               style={{ fontFamily: "var(--font-hero-inter)" }}
             >
               Dott. Rag. Piergiorgio Pelati<br />
@@ -163,7 +189,7 @@ export function Footer() {
 
             <a
               href={PORTAL_URL}
-              className="inline-flex items-center rounded-lg border border-white/25 px-4 py-2 text-xs font-semibold text-white transition-colors duration-200 hover:border-white/50 hover:bg-white/10"
+              className="inline-flex items-center rounded-xl border border-white/25 px-4 py-2 text-xs font-semibold text-white transition-colors duration-200 hover:border-white/50 hover:bg-white/10"
               style={{ fontFamily: "var(--font-hero-manrope)" }}
             >
               Portale Aziende →
@@ -174,20 +200,30 @@ export function Footer() {
 
         {/* Bottom bar */}
         <div
-          className="mt-12 flex flex-col gap-2 border-t border-white/10 pt-8 sm:flex-row sm:justify-between"
+          className="mt-12 flex flex-col gap-3 border-t border-white/10 pt-8 sm:flex-row sm:items-center sm:justify-between"
         >
           <span
             className="text-xs text-white/35"
             style={{ fontFamily: "var(--font-hero-inter)" }}
           >
-            © {year} Studio Pelati — P.IVA 00362840985
+            © {year} Studio Pelati — P.IVA 00362840985 — Tutti i diritti riservati
           </span>
-          <span
-            className="text-xs text-white/35"
-            style={{ fontFamily: "var(--font-hero-inter)" }}
-          >
-            Tutti i diritti riservati
-          </span>
+          <div className="flex flex-wrap gap-4">
+            <Link
+              href="/privacy"
+              className="text-xs text-white/35 transition-colors hover:text-white/60"
+              style={{ fontFamily: "var(--font-hero-inter)" }}
+            >
+              Privacy Policy
+            </Link>
+            <Link
+              href="/cookie-policy"
+              className="text-xs text-white/35 transition-colors hover:text-white/60"
+              style={{ fontFamily: "var(--font-hero-inter)" }}
+            >
+              Cookie Policy
+            </Link>
+          </div>
         </div>
 
       </div>
