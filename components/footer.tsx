@@ -1,45 +1,195 @@
+import { Manrope, Inter } from "next/font/google";
 import Link from "next/link";
 
+const manrope = Manrope({
+  subsets: ["latin"],
+  weight: ["700"],
+  variable: "--font-hero-manrope",
+  display: "swap",
+});
+
+const inter = Inter({
+  subsets: ["latin"],
+  weight: ["400", "500"],
+  variable: "--font-hero-inter",
+  display: "swap",
+});
+
+const PORTAL_URL = process.env.NEXT_PUBLIC_PORTAL_URL ?? "https://portale.studiopelati.it";
+
+const NAV_LINKS = [
+  { href: "/lo-studio",       label: "Lo Studio" },
+  { href: "/servizi",         label: "Servizi" },
+  { href: "/clienti",         label: "Area clienti" },
+  { href: "/approfondimenti", label: "Approfondimenti" },
+  { href: "/contatti",        label: "Contatti" },
+];
+
+const SERVIZI = [
+  "Amministrazione del personale",
+  "Consulenza del lavoro",
+  "Agevolazioni contributive",
+  "Ammortizzatori sociali",
+];
+
 export function Footer() {
+  const year = new Date().getFullYear();
+
   return (
-    <footer className="mt-auto border-t border-[var(--border)] bg-[var(--bg)]">
-      <div className="mx-auto max-w-5xl px-6 py-10">
-        <div className="flex flex-col md:flex-row justify-between gap-8">
-          {/* Brand */}
-          <div>
-            <div className="font-semibold text-[var(--fg)] mb-1">Studio Pelati</div>
-            <p className="text-sm text-[var(--fg-sub)] mb-1">
+    <footer
+      className={`${manrope.variable} ${inter.variable} mt-auto`}
+      style={{ background: "#1E293B" }}
+    >
+      <div className="mx-auto max-w-6xl px-6 pb-10 pt-14 md:pt-16">
+
+        {/* Griglia principale */}
+        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
+
+          {/* Col 1 — Brand */}
+          <div className="sm:col-span-2 lg:col-span-1">
+            <div
+              className="mb-4 h-0.5 w-10 rounded-full"
+              style={{ background: "#C9A227" }}
+            />
+            <p
+              className="mb-1 text-lg font-bold text-white"
+              style={{ fontFamily: "var(--font-hero-manrope)" }}
+            >
+              Studio Pelati
+            </p>
+            <p
+              className="mb-4 text-xs font-semibold uppercase tracking-wider"
+              style={{ color: "#C9A227", fontFamily: "var(--font-hero-manrope)" }}
+            >
+              Consulenza del Lavoro
+            </p>
+            <p
+              className="mb-2 text-sm leading-relaxed text-white/60"
+              style={{ fontFamily: "var(--font-hero-inter)" }}
+            >
               Dott. Rag. Piergiorgio Pelati<br />
               Consulente del Lavoro · Ragioniere Commercialista
             </p>
-            <p className="text-xs text-[var(--fg-sub)] mt-2">
+            <p
+              className="text-xs leading-relaxed text-white/35"
+              style={{ fontFamily: "var(--font-hero-inter)" }}
+            >
               In sinergia con Studio Pelati snc<br />
-              centro elaborazione dati e servizi alle imprese
+              Centro elaborazione dati e servizi alle imprese
             </p>
           </div>
 
-          {/* Pagine */}
-          <div className="flex flex-col gap-2">
-            <div className="text-xs font-semibold uppercase tracking-wider text-[var(--fg-sub)] mb-1">Pagine</div>
-            <Link href="/lo-studio" className="text-sm text-[var(--fg-sub)] hover:text-brand-700 transition-colors">Lo Studio</Link>
-            <Link href="/servizi"   className="text-sm text-[var(--fg-sub)] hover:text-brand-700 transition-colors">Servizi</Link>
-            <Link href="/clienti"   className="text-sm text-[var(--fg-sub)] hover:text-brand-700 transition-colors">Area clienti</Link>
-            <Link href="/contatti"  className="text-sm text-[var(--fg-sub)] hover:text-brand-700 transition-colors">Contatti</Link>
+          {/* Col 2 — Navigazione */}
+          <div>
+            <p
+              className="mb-4 text-xs font-semibold uppercase tracking-[0.14em] text-white/35"
+              style={{ fontFamily: "var(--font-hero-manrope)" }}
+            >
+              Navigazione
+            </p>
+            <ul className="space-y-2.5">
+              {NAV_LINKS.map(({ href, label }) => (
+                <li key={href}>
+                  <Link
+                    href={href}
+                    className="text-sm text-white/60 transition-colors duration-150 hover:text-white"
+                    style={{ fontFamily: "var(--font-hero-inter)" }}
+                  >
+                    {label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
           </div>
 
-          {/* Contatti */}
-          <div className="flex flex-col gap-2">
-            <div className="text-xs font-semibold uppercase tracking-wider text-[var(--fg-sub)] mb-1">Contatti</div>
-            <span className="text-sm text-[var(--fg-sub)]">Via Santissima Trinità 19 (scala C)</span>
-            <a href="tel:+390307000841" className="text-sm text-[var(--fg-sub)] hover:text-brand-700 transition-colors">+39 030 7000841</a>
-            <a href="mailto:info@studiopelati.it" className="text-sm text-[var(--fg-sub)] hover:text-brand-700 transition-colors">info@studiopelati.it</a>
+          {/* Col 3 — Servizi */}
+          <div>
+            <p
+              className="mb-4 text-xs font-semibold uppercase tracking-[0.14em] text-white/35"
+              style={{ fontFamily: "var(--font-hero-manrope)" }}
+            >
+              Servizi
+            </p>
+            <ul className="space-y-2.5">
+              {SERVIZI.map((s) => (
+                <li key={s}>
+                  <Link
+                    href="/servizi"
+                    className="text-sm text-white/60 transition-colors duration-150 hover:text-white"
+                    style={{ fontFamily: "var(--font-hero-inter)" }}
+                  >
+                    {s}
+                  </Link>
+                </li>
+              ))}
+            </ul>
           </div>
+
+          {/* Col 4 — Contatti */}
+          <div>
+            <p
+              className="mb-4 text-xs font-semibold uppercase tracking-[0.14em] text-white/35"
+              style={{ fontFamily: "var(--font-hero-manrope)" }}
+            >
+              Contatti
+            </p>
+            <ul className="mb-5 space-y-2.5">
+              <li
+                className="text-sm leading-relaxed text-white/60"
+                style={{ fontFamily: "var(--font-hero-inter)" }}
+              >
+                Via Santissima Trinità 19 (scala C)<br />
+                25124 Brescia (BS)
+              </li>
+              <li>
+                <a
+                  href="tel:+390307000841"
+                  className="text-sm text-white/60 transition-colors duration-150 hover:text-white"
+                  style={{ fontFamily: "var(--font-hero-inter)" }}
+                >
+                  +39 030 7000841
+                </a>
+              </li>
+              <li>
+                <a
+                  href="mailto:info@studiopelati.it"
+                  className="text-sm text-white/60 transition-colors duration-150 hover:text-white"
+                  style={{ fontFamily: "var(--font-hero-inter)" }}
+                >
+                  info@studiopelati.it
+                </a>
+              </li>
+            </ul>
+
+            <a
+              href={PORTAL_URL}
+              className="inline-flex items-center rounded-lg border border-white/25 px-4 py-2 text-xs font-semibold text-white transition-colors duration-200 hover:border-white/50 hover:bg-white/10"
+              style={{ fontFamily: "var(--font-hero-manrope)" }}
+            >
+              Portale Aziende →
+            </a>
+          </div>
+
         </div>
 
-        <div className="mt-8 pt-6 border-t border-[var(--border)] flex flex-col sm:flex-row justify-between gap-2 text-xs text-[var(--fg-sub)]">
-          <span>© {new Date().getFullYear()} Studio Pelati — P.IVA 00362840985</span>
-          <span>Tutti i diritti riservati</span>
+        {/* Bottom bar */}
+        <div
+          className="mt-12 flex flex-col gap-2 border-t border-white/10 pt-8 sm:flex-row sm:justify-between"
+        >
+          <span
+            className="text-xs text-white/35"
+            style={{ fontFamily: "var(--font-hero-inter)" }}
+          >
+            © {year} Studio Pelati — P.IVA 00362840985
+          </span>
+          <span
+            className="text-xs text-white/35"
+            style={{ fontFamily: "var(--font-hero-inter)" }}
+          >
+            Tutti i diritti riservati
+          </span>
         </div>
+
       </div>
     </footer>
   );

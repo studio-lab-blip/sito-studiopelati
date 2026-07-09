@@ -48,7 +48,7 @@ const STATS = [
 
 export function NumeriClient() {
   return (
-    <section className="bg-white py-20 md:py-24">
+    <section className="bg-white py-20 md:py-28">
       <div className="mx-auto max-w-6xl px-6">
         {/* Intestazione */}
         <motion.div
