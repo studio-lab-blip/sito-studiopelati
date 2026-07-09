@@ -2,6 +2,7 @@ import Link from "next/link";
 import { HeroSection } from "@/components/hero-section";
 import { SezioniWrapper } from "@/components/sezioni-wrapper";
 import { PortaleSection } from "@/components/portale-section";
+import { PercheSection } from "@/components/perche-section";
 
 const PORTAL_URL = process.env.NEXT_PUBLIC_PORTAL_URL ?? "https://studiopelati.it";
 
@@ -16,6 +17,9 @@ export default function HomePage() {
 
       {/* Portale Aziende */}
       <PortaleSection />
+
+      {/* Perché scegliere Studio Pelati */}
+      <PercheSection />
 
       {/* CTA finale */}
       <section className="border-t border-[var(--border)] bg-brand-950">
