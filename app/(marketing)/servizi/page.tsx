@@ -52,6 +52,7 @@ const contenzioso = [
 
 export default function ServiziPage() {
   return (
+    <div style={{ background: "#edede9" }} className="min-h-screen">
     <div className="mx-auto max-w-5xl px-6 py-16">
       <p className="text-sm font-semibold text-brand-700 mb-3 uppercase tracking-widest">Servizi</p>
       <h1 className="text-3xl md:text-4xl font-bold text-[var(--fg)] mb-4 leading-tight">
@@ -127,6 +128,7 @@ export default function ServiziPage() {
           ))}
         </ul>
       </section>
+    </div>
     </div>
   );
 }
