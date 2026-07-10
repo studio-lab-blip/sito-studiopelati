@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { Tag, BookOpen, FolderOpen, ArrowRight } from "lucide-react";
+import { Tag, BookOpen, FolderOpen } from "lucide-react";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
@@ -141,28 +141,6 @@ export function ApprofondimentiClient() {
           ))}
         </motion.div>
 
-        {/* CTA finale centrata */}
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-60px" }}
-          transition={{ duration: 0.5, delay: 0.2, ease }}
-          className="flex justify-center"
-        >
-          <Link
-            href="/approfondimenti"
-            className="inline-flex items-center gap-2 rounded-xl border bg-white px-7 py-3 text-sm font-semibold transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md hover:bg-[#EFF6FF]"
-            style={{
-              borderColor: "#2563EB",
-              color: "#2563EB",
-              fontFamily: "var(--font-hero-manrope)",
-              boxShadow: "0 2px 8px rgba(0,0,0,0.06)",
-            }}
-          >
-            Vai agli approfondimenti
-            <ArrowRight className="size-4" />
-          </Link>
-        </motion.div>
 
       </div>
     </section>
