@@ -1,5 +1,6 @@
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
+import { CookieBanner } from "@/components/cookie-banner";
 
 const PORTAL_URL = process.env.NEXT_PUBLIC_PORTAL_URL ?? "https://portale.studiopelati.it";
 
@@ -24,6 +25,7 @@ export default async function MarketingLayout({ children }: { children: React.Re
       <Navbar logoUrl={logoUrl} />
       <main className="flex-1">{children}</main>
       <Footer />
+      <CookieBanner />
     </>
   );
 }
