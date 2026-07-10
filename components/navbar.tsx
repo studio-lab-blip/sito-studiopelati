@@ -27,9 +27,9 @@ export function Navbar({ logoUrl }: { logoUrl?: string | null }) {
             <Image
               src={logoUrl}
               alt="Studio Pelati"
-              width={120}
-              height={40}
-              className="h-10 w-auto object-contain"
+              width={180}
+              height={60}
+              className="h-14 w-auto object-contain"
               unoptimized
             />
           ) : (
@@ -46,19 +46,23 @@ export function Navbar({ logoUrl }: { logoUrl?: string | null }) {
 
         {/* Desktop nav */}
         <nav className="hidden md:flex items-center gap-6">
-          {links.map(({ href, label }) => (
-            <Link
-              key={href}
-              href={href}
-              className={`text-sm transition-colors hover:text-brand-700 ${
-                pathname === href || pathname.startsWith(href + "/")
-                  ? "text-brand-700 font-medium"
-                  : "text-[var(--fg-sub)]"
-              }`}
-            >
-              {label}
-            </Link>
-          ))}
+          {links.map(({ href, label }) => {
+            const active = pathname === href || pathname.startsWith(href + "/");
+            return (
+              <Link
+                key={href}
+                href={href}
+                className={`relative text-sm transition-colors hover:text-[#0F4C5C] ${
+                  active ? "text-[#0F4C5C] font-semibold" : "text-[var(--fg-sub)]"
+                }`}
+              >
+                {label}
+                {active && (
+                  <span className="absolute -bottom-1 left-0 right-0 h-0.5 rounded-full bg-[#0F4C5C]" />
+                )}
+              </Link>
+            );
+          })}
         </nav>
 
         {/* CTA */}
@@ -84,16 +88,21 @@ export function Navbar({ logoUrl }: { logoUrl?: string | null }) {
       {/* Mobile menu */}
       {open && (
         <div className="md:hidden border-t border-[var(--border)] px-6 py-4 flex flex-col gap-4">
-          {links.map(({ href, label }) => (
-            <Link
-              key={href}
-              href={href}
-              onClick={() => setOpen(false)}
-              className="text-sm text-[var(--fg-sub)] hover:text-brand-700 transition-colors"
-            >
-              {label}
-            </Link>
-          ))}
+          {links.map(({ href, label }) => {
+            const active = pathname === href || pathname.startsWith(href + "/");
+            return (
+              <Link
+                key={href}
+                href={href}
+                onClick={() => setOpen(false)}
+                className={`text-sm transition-colors hover:text-[#0F4C5C] ${
+                  active ? "text-[#0F4C5C] font-semibold" : "text-[var(--fg-sub)]"
+                }`}
+              >
+                {label}
+              </Link>
+            );
+          })}
           <a
             href={PORTAL_URL}
             className="inline-flex justify-center rounded-lg bg-brand-700 px-4 py-2 text-sm font-medium text-white hover:bg-brand-800 transition-colors"

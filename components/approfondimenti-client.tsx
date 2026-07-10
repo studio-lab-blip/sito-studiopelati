@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Link from "next/link";
 import { Tag, BookOpen, FolderOpen, ArrowRight } from "lucide-react";
 
 const ease = [0.22, 1, 0.36, 1] as const;
@@ -136,16 +137,6 @@ export function ApprofondimentiClient() {
                 {desc}
               </p>
 
-              {/* Link "Esplora" */}
-              <div
-                className="flex items-center gap-1.5 text-sm font-semibold transition-gap duration-200"
-                style={{ color: colore, fontFamily: "var(--font-hero-manrope)" }}
-              >
-                Esplora
-                <ArrowRight
-                  className="size-4 transition-transform duration-200 group-hover:translate-x-1"
-                />
-              </div>
             </motion.article>
           ))}
         </motion.div>
@@ -158,25 +149,19 @@ export function ApprofondimentiClient() {
           transition={{ duration: 0.5, delay: 0.2, ease }}
           className="flex justify-center"
         >
-          <a
+          <Link
             href="/approfondimenti"
-            className="inline-flex items-center gap-2 rounded-xl border bg-white px-7 py-3 text-sm font-semibold transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md"
+            className="inline-flex items-center gap-2 rounded-xl border bg-white px-7 py-3 text-sm font-semibold transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md hover:bg-[#EFF6FF]"
             style={{
               borderColor: "#2563EB",
               color: "#2563EB",
               fontFamily: "var(--font-hero-manrope)",
               boxShadow: "0 2px 8px rgba(0,0,0,0.06)",
             }}
-            onMouseEnter={(e) => {
-              (e.currentTarget as HTMLAnchorElement).style.background = "#EFF6FF";
-            }}
-            onMouseLeave={(e) => {
-              (e.currentTarget as HTMLAnchorElement).style.background = "#FFFFFF";
-            }}
           >
             Vai agli approfondimenti
             <ArrowRight className="size-4" />
-          </a>
+          </Link>
         </motion.div>
 
       </div>

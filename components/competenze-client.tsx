@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Link from "next/link";
 import { FileText, Briefcase, Percent, Shield } from "lucide-react";
 
 const ease = [0.22, 1, 0.36, 1] as const;
@@ -132,12 +133,13 @@ export function CompetenzeClient() {
               </p>
 
               {/* Freccia discreta */}
-              <div
+              <Link
+                href="/servizi"
                 className="mt-5 text-sm font-semibold opacity-0 transition-opacity duration-300 group-hover:opacity-100"
                 style={{ color: colore, fontFamily: "var(--font-hero-manrope)" }}
               >
                 Scopri di più →
-              </div>
+              </Link>
             </motion.div>
           ))}
         </motion.div>

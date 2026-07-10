@@ -70,7 +70,7 @@ export function NumeriClient() {
             className="text-3xl font-bold md:text-4xl"
             style={{ color: "#1E293B", fontFamily: "var(--font-hero-manrope)" }}
           >
-            Lo studio in numeri
+            I punti di forza
           </h2>
         </motion.div>
 

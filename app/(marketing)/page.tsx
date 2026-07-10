@@ -9,9 +9,9 @@ export default function HomePage() {
   return (
     <>
       <HeroSection />
+      <PercheSection />
       <SezioniWrapper />
       <PortaleSection />
-      <PercheSection />
       <ApprofondimentiSection />
       <CtaSection />
     </>

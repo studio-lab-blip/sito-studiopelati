@@ -83,9 +83,9 @@ export function HeroClient({
                 <Image
                   src={logoUrl}
                   alt="Studio Pelati"
-                  width={160}
-                  height={56}
-                  className="h-14 w-auto object-contain"
+                  width={220}
+                  height={76}
+                  className="h-20 w-auto object-contain"
                   unoptimized
                 />
               </motion.div>
@@ -144,17 +144,6 @@ export function HeroClient({
               >
                 Prenota una consulenza
                 <ArrowRight className="size-4" />
-              </a>
-              <a
-                href={PORTAL_URL}
-                className="inline-flex items-center gap-2 rounded-xl border bg-white px-6 py-3 text-sm font-semibold transition-colors duration-200 hover:bg-[#EFF6FF]"
-                style={{
-                  borderColor: "#2563EB",
-                  color: "#2563EB",
-                  fontFamily: "var(--font-hero-manrope)",
-                }}
-              >
-                Accedi al Portale
               </a>
             </motion.div>
           </div>
