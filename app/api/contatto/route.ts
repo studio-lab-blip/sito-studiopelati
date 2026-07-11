@@ -19,7 +19,6 @@ Nome: ${body.nome}
 Azienda: ${body.azienda || "—"}
 Telefono: ${body.telefono}
 Email: ${body.email}
-WhatsApp: ${body.whatsapp || "—"}
 
 Messaggio:
 ${body.messaggio || "—"}
