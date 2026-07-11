@@ -1,5 +1,4 @@
 import { Manrope, Inter } from "next/font/google";
-import Image from "next/image";
 import Link from "next/link";
 
 const manrope = Manrope({
@@ -18,17 +17,6 @@ const inter = Inter({
 
 const PORTAL_URL = process.env.NEXT_PUBLIC_PORTAL_URL ?? "https://portale.studiopelati.it";
 
-async function fetchLogoUrl(): Promise<string | null> {
-  try {
-    const res = await fetch(`${PORTAL_URL}/api/public/studio`, { next: { revalidate: 3600 } });
-    if (!res.ok) return null;
-    const data = await res.json();
-    return (data as { logo_url?: string | null }).logo_url ?? null;
-  } catch {
-    return null;
-  }
-}
-
 const NAV_LINKS = [
   { href: "/lo-studio",       label: "Lo Studio" },
   { href: "/servizi",         label: "Servizi" },
@@ -44,8 +32,7 @@ const SERVIZI = [
   "Ammortizzatori sociali",
 ];
 
-export async function Footer() {
-  const logoUrl = await fetchLogoUrl();
+export function Footer() {
   const year = new Date().getFullYear();
 
   return (
@@ -60,29 +47,16 @@ export async function Footer() {
 
           {/* Col 1 — Brand */}
           <div className="sm:col-span-2 lg:col-span-1">
-            {logoUrl ? (
-              <Image
-                src={logoUrl}
-                alt="Studio Pelati"
-                width={140}
-                height={48}
-                className="mb-5 h-10 w-auto object-contain brightness-0 invert"
-                unoptimized
-              />
-            ) : (
-              <>
-                <div
-                  className="mb-4 h-0.5 w-10 rounded-full"
-                  style={{ background: "#C9A227" }}
-                />
-                <p
-                  className="mb-1 text-lg font-bold text-white"
-                  style={{ fontFamily: "var(--font-hero-manrope)" }}
-                >
-                  Studio Pelati
-                </p>
-              </>
-            )}
+            <div
+              className="mb-4 h-0.5 w-10 rounded-full"
+              style={{ background: "#C9A227" }}
+            />
+            <p
+              className="mb-1 text-lg font-bold text-white"
+              style={{ fontFamily: "var(--font-hero-manrope)" }}
+            >
+              Studio Pelati
+            </p>
             <p
               className="mb-1 text-xs font-semibold uppercase tracking-wider"
               style={{ color: "#C9A227", fontFamily: "var(--font-hero-manrope)" }}
