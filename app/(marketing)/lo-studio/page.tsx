@@ -32,9 +32,25 @@ export default function LoStudioPage() {
       {/* Intestazione */}
       <div className="mb-14">
         <p className="text-sm font-semibold text-brand-700 mb-3 uppercase tracking-widest">Lo Studio</p>
-        <h1 className="text-3xl md:text-4xl font-bold text-[var(--fg)] mb-3 leading-tight max-w-2xl">
-          Dott. Rag. Piergiorgio Pelati
-        </h1>
+        <div className="flex flex-wrap items-center gap-4 mb-3">
+          <h1 className="text-3xl md:text-4xl font-bold text-[var(--fg)] leading-tight">
+            Dott. Rag. Piergiorgio Pelati
+          </h1>
+          <div className="flex items-center gap-2">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="https://portale.studiopelati.it/loghi-professionali/consulenti-del-lavoro.png"
+              alt="Consulenti del Lavoro"
+              className="h-9 w-auto object-contain rounded-md border border-gray-200 bg-white p-0.5"
+            />
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="https://portale.studiopelati.it/loghi-professionali/odcec-brescia.png"
+              alt="ODCEC Brescia"
+              className="h-9 w-auto object-contain rounded-md border border-gray-200 bg-white p-0.5"
+            />
+          </div>
+        </div>
         <p className="text-lg text-brand-700 font-medium mb-4">
           Consulente del Lavoro · Ragioniere Commercialista
         </p>
