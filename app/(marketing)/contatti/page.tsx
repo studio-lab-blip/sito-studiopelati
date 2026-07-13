@@ -93,6 +93,27 @@ export default function ContattiPage() {
             </div>
           </div>
 
+          <div className="overflow-hidden rounded-xl border border-[var(--border)]">
+            <iframe
+              src="https://maps.google.com/maps?q=45.5375740,9.9225121&z=16&output=embed&hl=it"
+              width="100%"
+              height="220"
+              style={{ border: 0, display: "block" }}
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              title="Studio Pelati — Come trovarci"
+            />
+            <a
+              href="https://maps.app.goo.gl/YYnQyHDzGD23Ywqt7"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center justify-center gap-1.5 py-2.5 text-xs font-medium text-brand-700 hover:underline border-t border-[var(--border)]"
+            >
+              Apri in Google Maps →
+            </a>
+          </div>
+
         </div>
       </div>
     </div>
