@@ -100,20 +100,21 @@ export function PercheClient() {
             <motion.div
               key={numero}
               variants={item}
-              className="group relative flex flex-col rounded-2xl border bg-white p-8 transition-all duration-300"
+              className="group relative flex flex-col rounded-2xl border p-8 transition-all duration-300"
               style={{
-                borderColor: "#E2E8F0",
-                boxShadow: "0 2px 12px rgba(0,0,0,0.06)",
+                backgroundColor: "#f0fdf4",
+                borderColor: "#166534",
+                boxShadow: "0 2px 12px rgba(22,101,52,0.18)",
               }}
               onMouseEnter={(e) => {
                 (e.currentTarget as HTMLDivElement).style.transform = "translateY(-3px)";
-                (e.currentTarget as HTMLDivElement).style.boxShadow = "0 12px 28px rgba(0,0,0,0.10)";
-                (e.currentTarget as HTMLDivElement).style.borderColor = "rgba(15,76,92,0.20)";
+                (e.currentTarget as HTMLDivElement).style.boxShadow = "0 12px 28px rgba(22,101,52,0.28)";
+                (e.currentTarget as HTMLDivElement).style.borderColor = "#14532d";
               }}
               onMouseLeave={(e) => {
                 (e.currentTarget as HTMLDivElement).style.transform = "translateY(0)";
-                (e.currentTarget as HTMLDivElement).style.boxShadow = "0 2px 12px rgba(0,0,0,0.06)";
-                (e.currentTarget as HTMLDivElement).style.borderColor = "#E2E8F0";
+                (e.currentTarget as HTMLDivElement).style.boxShadow = "0 2px 12px rgba(22,101,52,0.18)";
+                (e.currentTarget as HTMLDivElement).style.borderColor = "#166534";
               }}
             >
               {/* Badge numero + icona — affiancati */}
